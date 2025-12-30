@@ -1,0 +1,19 @@
+# Dependencias
+node_modules/
+*/node_modules/
+
+# Archivos de entorno (Claves secretas)
+.env
+*/.env
+
+# Builds de producción
+dist/
+build/
+*/dist/
+*/build/
+
+# Logs y sistemas
+*.log
+.DS_Store
+.vscode/
+coverage/

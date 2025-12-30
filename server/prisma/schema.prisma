@@ -1,0 +1,101 @@
+// server/prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int       @id @default(autoincrement())
+  email         String    @unique
+  password      String?
+  name          String?
+  googleId      String?   @unique
+  resetToken    String?
+  resetTokenExpiry DateTime?
+  createdAt     DateTime  @default(now())
+  
+  // --- NUEVOS CAMPOS DE PERFIL ---
+  profileImage  String?   // URL de la foto
+  phone         String?
+  city          String?
+  country       String?
+  birthDate     DateTime?
+  foodInterests String?   // Guardaremos una lista separada por comas "Mexicana,Italiana"
+  // ------------------------------
+
+  places        Place[]
+  visits        Visit[]
+  reviewLikes   ReviewLike[]
+}
+
+model Place {
+  id            Int      @id @default(autoincrement())
+  name          String
+  category      String
+  address       String
+  latitude      Float
+  longitude     Float
+  menu          String?
+  
+  // --- NUEVOS CAMPOS ---
+  phone         String?
+  costRange     String?   // Ej: $, $$, $$$
+  openingHours  String?   // Ej: 9:00 AM - 6:00 PM
+  hasDelivery   Boolean   @default(false) // Entrega propia
+  deliveryApps  String?   // Ej: "UberEats, Rappi"
+  coverImage    String?   // URL de la imagen
+  verified      Boolean   @default(false)
+  visitCount    Int       @default(0)
+  // ---------------------
+
+  userId      Int
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id])
+  
+  // Relación con reseñas
+  reviews     Review[]
+  visits        Visit[]
+}
+
+// NUEVO MODELO PARA CALIFICACIONES
+model Review {
+  id            Int      @id @default(autoincrement())
+  ratingService Int      // 1-5
+  ratingTime    Int      // 1-5
+  ratingTaste   Int      // 1-5
+  comment       String?
+  createdAt     DateTime @default(now())
+  
+  placeId       Int
+  place         Place    @relation(fields: [placeId], references: [id])
+  likes         ReviewLike[]
+}
+
+// NUEVO MODELO
+model Visit {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  
+  userId    Int
+  placeId   Int
+  
+  user      User     @relation(fields: [userId], references: [id])
+  place     Place    @relation(fields: [placeId], references: [id])
+}
+
+model ReviewLike {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  reviewId  Int
+  
+  user      User     @relation(fields: [userId], references: [id])
+  review    Review   @relation(fields: [reviewId], references: [id])
+
+  // Restricción: Un usuario solo puede tener un like por reseña
+  @@unique([userId, reviewId])
+}

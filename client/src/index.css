@@ -1,0 +1,244 @@
+/* Importante: Estas variables sobrescriben las del tema Lara Light Indigo */
+:root {
+  /* --- COLOR PRIMARIO (Naranja #FF6B4A) --- */
+  /* PrimeReact usa estos tonos internamente */
+  --primary-color: #ff6b4a;
+  --primary-color-text: #ffffff;
+
+  /* Generamos la escala de naranjas para los estados hover/active */
+  --primary-50: #fff3f0;
+  --primary-100: #ffe0d9;
+  --primary-200: #ffc2b3;
+  --primary-300: #ffa38c;
+  --primary-400: #ff8566;
+  --primary-500: #ff6b4a; /* Base */
+  --primary-600: #e65a3c; /* Hover */
+  --primary-700: #cc4a30; /* Active */
+  --primary-800: #b33b24;
+  --primary-900: #992d18;
+
+  /* --- COLOR ÉXITO/VERDE (#4CAF50) --- */
+  --green-500: #4caf50;
+  --green-600: #43a047; /* Hover */
+  --green-700: #388e3c;
+  --green-50: #e8f5e9; /* Fondo claro */
+
+  /* --- FONDO APP (#F5F6F7) --- */
+  --surface-ground: #f5f6f7;
+  --surface-section: #ffffff;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Aplicar fondo global */
+body {
+  background-color: var(--surface-ground);
+  margin: 0;
+  padding: 0;
+  color: #495057;
+}
+
+/* --- CLASES DE UTILIDAD FORZADAS --- */
+/* Esto asegura que las clases de texto y fondo usen nuestras variables */
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
+  color: var(--primary-color-text) !important;
+}
+
+/* Ajuste específico para botones Primary de PrimeReact */
+.p-button.p-button-primary,
+.p-button {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.p-button.p-button-primary:enabled:hover,
+.p-button:enabled:hover {
+  background: var(--primary-600) !important;
+  border-color: var(--primary-600) !important;
+}
+
+/* Ajuste para botones Success (Categorías seleccionadas) */
+.p-button.p-button-success {
+  background: var(--green-500) !important;
+  border-color: var(--green-500) !important;
+  color: var(--primary-color-text) !important;
+}
+
+.p-button.p-button-success:enabled:hover {
+  background: var(--green-600) !important;
+  border-color: var(--green-600) !important;
+}
+
+/* Ajuste para los Tags verdes de precio */
+.bg-green-50 {
+  background-color: var(--green-50) !important;
+}
+
+/* Estilo para botones de categoría NO seleccionados */
+.category-btn-unselected {
+  background-color: #ffffff !important;
+  color: #718096 !important;
+  border: none !important;
+  transition: all 0.2s ease; /* Suaviza el cambio de color */
+}
+
+/* El Hover que pediste: Fondo Verde y Texto Blanco */
+.category-btn-unselected:hover {
+  background-color: var(--green-500) !important; /* Usa el verde #4CAF50 */
+  color: #ffffff !important;
+  transform: translateY(-1px); /* Pequeño efecto de elevación opcional */
+}
+
+/* Botón de Mapa Personalizado */
+.map-btn-custom {
+  background-color: #ffffff !important;
+  border: 1px solid var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  width: 2.5rem !important; /* Ajuste de tamaño circular */
+  height: 2.5rem !important;
+  transition: all 0.2s ease;
+}
+
+/* Estado Hover: Fondo Naranja, Ícono Blanco */
+.map-btn-custom:hover {
+  background-color: var(--primary-color) !important;
+  color: #ffffff !important;
+  transform: scale(1.05); /* Pequeño zoom al pasar el mouse */
+}
+
+/* Asegurar que el ícono dentro cambie de color también */
+.map-btn-custom:hover .p-button-icon {
+  color: #ffffff !important;
+}
+
+/* Botón Check-in (Estado Inactivo: Blanco con borde #718096) */
+.btn-outline-custom {
+  background-color: #ffffff !important;
+  border: 1px solid #718096 !important;
+  color: #718096 !important;
+  transition: all 0.2s;
+}
+
+/* Botón Check-in (Hover/Activo: Naranja) */
+.btn-outline-custom:hover,
+.btn-outline-custom.active {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: #ffffff !important;
+}
+
+/* --- BOTÓN ME GUSTA (CORAZÓN) --- */
+/* Inactivo: Blanco, borde #718096 */
+.btn-like-outline {
+  background-color: #ffffff !important;
+  border: 1px solid #718096 !important;
+  color: #718096 !important;
+}
+
+/* Activo: Naranja sólido */
+.btn-like-active {
+  background-color: var(--primary-color) !important;
+  border: 1px solid var(--primary-color) !important;
+  color: #ffffff !important;
+}
+
+/* --- ESTRELLAS AMARILLAS (#F59E0B) --- */
+/* Fuerza el color amarillo en el componente Rating */
+.yellow-rating .p-rating-icon-active {
+  color: #f59e0b !important;
+}
+
+/* FORZAR COLOR AMARILLO EN ESTRELLAS */
+/* Aplica tanto para comentarios como para el desglose detallado */
+.yellow-rating .p-rating-item.p-rating-item-active .p-rating-icon {
+  color: #f59e0b !important;
+}
+
+/* Soporte legacy para versiones anteriores de PrimeReact por si acaso */
+.yellow-rating .p-rating-icon-active {
+  color: #f59e0b !important;
+}
+
+/* --- BOTÓN CHECK-IN PERSONALIZADO --- */
+
+/* Estado Inactivo: Blanco, Borde Gris, Texto/Icono Gris */
+.btn-checkin-inactive {
+  background-color: #ffffff !important;
+  border: 1px solid #718096 !important;
+  color: #718096 !important;
+  transition: all 0.2s;
+}
+
+/* Asegurar que el ícono también sea gris */
+.btn-checkin-inactive .p-button-icon {
+  color: #718096 !important;
+}
+
+/* Estado Hover (Opcional: un gris muy clarito al pasar el mouse sin dar click) */
+.btn-checkin-inactive:hover {
+  background-color: #f7fafc !important;
+  border-color: var(
+    --primary-color
+  ) !important; /* Un toque de color al hover */
+  color: var(--primary-color) !important;
+}
+.btn-checkin-inactive:hover .p-button-icon {
+  color: var(--primary-color) !important;
+}
+
+/* --- BOTÓN CHECK-IN (Referencia) --- */
+.btn-checkin-inactive {
+  background-color: #ffffff !important;
+  border: 1px solid #718096 !important;
+  color: #718096 !important;
+  transition: all 0.2s;
+}
+.btn-checkin-inactive .p-button-icon {
+  color: #718096 !important;
+}
+.btn-checkin-inactive:hover {
+  background-color: #f7fafc !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+.btn-checkin-inactive:hover .p-button-icon {
+  color: var(--primary-color) !important;
+}
+
+/* --- BOTÓN LIKE / CORAZÓN (Actualizado) --- */
+
+/* Estado Inactivo: IDÉNTICO AL CHECK-IN */
+.btn-like-inactive {
+  background-color: #ffffff !important;
+  border: 1px solid #718096 !important;
+  color: #718096 !important;
+  transition: all 0.2s;
+}
+
+/* Forzar que el ÍCONO del corazón sea gris #718096 */
+.btn-like-inactive .p-button-icon {
+  color: #718096 !important;
+}
+
+/* Estado Hover (Opcional): Mismo comportamiento que Check-in */
+.btn-like-inactive:hover {
+  background-color: #f7fafc !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+.btn-like-inactive:hover .p-button-icon {
+  color: var(--primary-color) !important;
+}
+
+/* Estado Activo (Presionado): Naranja Sólido */
+.btn-like-active {
+  background-color: var(--primary-color) !important;
+  border: 1px solid var(--primary-color) !important;
+  color: #ffffff !important;
+}
