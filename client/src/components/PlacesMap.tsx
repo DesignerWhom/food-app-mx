@@ -46,6 +46,8 @@ interface Place {
   latitude: number;
   longitude: number;
   category: string;
+  address: string; // <--- Faltaba esta propiedad obligatoria
+  // Puedes agregar otras propiedades opcionales si las necesitas en el mapa
 }
 
 interface Props {

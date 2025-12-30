@@ -51,7 +51,7 @@ export default function AddReview({ placeId, onSuccess, onCancel }: Props) {
           <label className="block mb-2 font-bold">Atención</label>
           <Rating
             value={service || 0}
-            onChange={(e) => setService(e.value)}
+            onChange={(e) => setService(e.value ?? null)}
             cancel={false}
             stars={5}
           />
@@ -60,7 +60,7 @@ export default function AddReview({ placeId, onSuccess, onCancel }: Props) {
           <label className="block mb-2 font-bold">Tiempo</label>
           <Rating
             value={time || 0}
-            onChange={(e) => setTime(e.value)}
+            onChange={(e) => setTime(e.value ?? null)}
             cancel={false}
             stars={5}
           />
@@ -69,7 +69,7 @@ export default function AddReview({ placeId, onSuccess, onCancel }: Props) {
           <label className="block mb-2 font-bold">Sabor</label>
           <Rating
             value={taste || 0}
-            onChange={(e) => setTaste(e.value)}
+            onChange={(e) => setTaste(e.value ?? null)}
             cancel={false}
             stars={5}
           />

@@ -190,7 +190,6 @@ export default function LocationPicker({ onLocationSelect }: Props) {
             // Truco: React Leaflet necesita un cambio de estado para reaccionar.
             // Como userCenter ya es el mismo, forzamos un re-render del MapController pasando una copia
             onClick={() => {
-              const map = document.querySelector(".leaflet-container");
               // Ojo: En este diseño simplificado, el MapController reaccionará si userCenter cambia
               // pero si ya estamos ahí, no hará nada.
               // Para forzar recentrar, la forma más limpia es actualizar userCenter

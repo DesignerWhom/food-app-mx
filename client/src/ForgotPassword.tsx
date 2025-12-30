@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import { Message } from "primereact/message";
 import axios from "axios";
 
 interface Props {

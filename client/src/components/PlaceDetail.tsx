@@ -178,7 +178,7 @@ export default function PlaceDetail({
             icon="pi pi-map-marker"
             rounded // PILL SHAPE
             className={`w-10rem ${isCheckedIn ? "" : "btn-checkin-inactive"}`}
-            severity={isCheckedIn ? "primary" : undefined}
+            severity={isCheckedIn ? undefined : undefined}
             onClick={() => setIsCheckedIn(!isCheckedIn)}
           />
         </div>
